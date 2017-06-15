@@ -39,7 +39,7 @@ include_directories(
 find_library(LPTHREAD pthread)
 
 add_executable(rp ${REPLICATOR_SRC})
-set_target_properties(rp PROPERTIES COMPILE_FLAGS "-std=c++11" LINK_FLAGS "-Wl,-s -Wl,--gc-sections" OUTPUT_NAME replicatord)
+set_target_properties(rp PROPERTIES COMPILE_FLAGS "-std=c++11" LINK_FLAGS "-Wl,-s -Wl,--gc-sections -Wl,--no-as-needed" OUTPUT_NAME replicatord)
 target_link_libraries(rp rt dl tnt slave_a yaml-cpp ${LPTHREAD})
 
 install(TARGETS rp RUNTIME DESTINATION sbin)
